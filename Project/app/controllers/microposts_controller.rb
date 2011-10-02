@@ -12,7 +12,7 @@ class MicropostsController < ApplicationController
   end
 
   def destroy
-    @micropost.destroy
+    Micropost.find(params[:id]).destroy
     redirect_back_or root_path
   end
 
