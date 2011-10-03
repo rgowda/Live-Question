@@ -46,7 +46,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @microposts = @user.microposts.paginate(:page => params[:page])
+    @micropost = Micropost.new
     @title = @user.name
     @feed_items = @user.feed.paginate(:page => params[:page])
   end
