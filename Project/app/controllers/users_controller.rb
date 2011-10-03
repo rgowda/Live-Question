@@ -42,6 +42,7 @@ class UsersController < ApplicationController
   def index
     @title = "All users"
     @users = User.paginate(:page => params[:page])
+    store_location
   end
 
   def show
@@ -49,6 +50,7 @@ class UsersController < ApplicationController
     @micropost = Micropost.new
     @title = @user.name
     @feed_items = @user.feed.paginate(:page => params[:page])
+    store_location
   end
 
   def destroy

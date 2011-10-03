@@ -6,7 +6,9 @@
             <%= gravatar_for @user %>
             <%= @user.name %>
           </h1>
+          <% if current_user?(@user) %>
           <%= render 'shared/micropost_form' %>
+          <% end %>
           <%= render 'shared/feed' %>
         </td>
         <td class="sidebar round">
