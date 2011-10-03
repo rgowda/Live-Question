@@ -16,7 +16,6 @@ class MicropostsController < ApplicationController
   def comment
     @reply = Micropost.new
     @reply.user_id=current_user.id
-    @reply.micropost_id = params[:id]
     @ruser = current_user
   end
 

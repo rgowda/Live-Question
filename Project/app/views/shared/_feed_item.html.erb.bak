@@ -19,9 +19,6 @@
       </td>
   <% end %>
       <td>
-        <%= button_to "comment", "/users/#{current_user.id}/microposts/#{feed_item.id}/comment" %>
+        <%= link_to "comment", "/users/#{current_user.id}/microposts/#{feed_item.id}/comment"  %>
       </td>
-  <% @rfeed_items = Micropost.where("micropost_id = ?", feed_item.id) %>
-  <%= render :partial => 'shared/rfeed_item', :collection => @rfeed_items %>
-
 </tr>

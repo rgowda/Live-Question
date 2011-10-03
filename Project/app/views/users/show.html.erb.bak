@@ -1,0 +1,17 @@
+<table class="profile" summary="Profile information">
+  <tr>
+    <td class="main">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+      <%= render 'shared/micropost_form' %>
+      <%= render 'shared/feed' %>
+    </td>
+    <td class="sidebar round">
+      <strong>Name</strong> <%= @user.name %> <br/>
+      <strong>URL</strong>  <%= link_to user_path(@user), @user %>
+      <strong>Microposts</strong> <%= @user.microposts.count %>
+    </td>
+  </tr>
+</table>
