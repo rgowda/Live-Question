@@ -12,10 +12,13 @@
     </span>
   </td>
   <% if current_user?(feed_item.user) %>
-  <td>
-    <%= button_to "delete", feed_item, :method => :delete,
-                                     :confirm => "You sure?",
-                                     :title => feed_item.content %>
-  </td>
+      <td>
+        <%= button_to "delete", feed_item, :method => :delete,
+                      :confirm => "You sure?",
+                      :title => feed_item.content %>
+      </td>
   <% end %>
+      <td>
+        <%= link_to "comment", "/users/#{current_user.id}/microposts/#{feed_item.id}/comment"  %>
+      </td>
 </tr>

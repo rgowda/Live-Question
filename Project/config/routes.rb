@@ -1,19 +1,38 @@
 SampleApp::Application.routes.draw do
-  get "microposts/new"
+
+
+  resources :users do
+    resources :microposts do
+      member do
+        get 'comment'
+      end
+    end
+  end
+
 
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
-  resources :microposts, :only => [:create, :destroy]
+  resources :microposts, :only => [:create, :show, :destroy]
 
-  match '/signup',  :to => 'users#new'
-  match '/signin',  :to => 'sessions#new'
+    match '/signup', :to => 'users#new'
+  match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
 
   match '/contact', :to => 'pages#contact'
-  match '/about',   :to => 'pages#about'
-  match '/help',    :to => 'pages#help'
-  match '/home',    :to => 'pages#home'
+  match '/about', :to => 'pages#about'
+  match '/help', :to => 'pages#help'
+  match '/home', :to => 'pages#home'
   root :to => 'pages#home'
+
+  resources :users do
+    resources :microposts do
+    end
+  end
+
+
+
+
+  match ':controller(/:action(/:id(.:format)))'
 
 
   # The priority is based upon order of creation:
