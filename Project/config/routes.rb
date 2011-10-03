@@ -4,17 +4,19 @@ SampleApp::Application.routes.draw do
   resources :users do
     resources :microposts do
       member do
-        get 'comment'
+        post 'comment'
       end
     end
   end
+
+  match '/users/:id/microposts/:id/vote', :to => 'microposts#vote'
 
 
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
   resources :microposts, :only => [:create, :show, :destroy]
 
-    match '/signup', :to => 'users#new'
+  match '/signup', :to => 'users#new'
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
 
@@ -28,8 +30,6 @@ SampleApp::Application.routes.draw do
     resources :microposts do
     end
   end
-
-
 
 
   match ':controller(/:action(/:id(.:format)))'

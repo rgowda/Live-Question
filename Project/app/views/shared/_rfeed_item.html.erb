@@ -18,4 +18,7 @@
                       :title => rfeed_item.content %>
       </td>
   <% end %>
-  </tr>
+  <td>
+    <%= link_to "vote  #{rfeed_item.no_of_vote}", "/users/#{current_user.id}/microposts/#{rfeed_item.id}/vote" %>
+  </td>
+</tr>

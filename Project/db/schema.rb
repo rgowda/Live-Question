@@ -11,13 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110927163932) do
+ActiveRecord::Schema.define(:version => 20111003025636) do
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "micropost_id"
+    t.integer  "no_of_vote"
   end
 
   add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
@@ -33,5 +35,12 @@ ActiveRecord::Schema.define(:version => 20110927163932) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+
+  create_table "votes", :force => true do |t|
+    t.integer  "micropost_id"
+    t.integer  "voter_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
