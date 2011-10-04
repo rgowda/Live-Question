@@ -1,31 +1,40 @@
 <tr>
-  <td class="gravatar">
-    <%= link_to gravatar_for(feed_item.user), feed_item.user %>
-  </td>
-  <td class="micropost">
-    <span class="user">
-      <%= link_to feed_item.user.name, feed_item.user %>
-    </span>
-    <span class="content"><%= feed_item.content %></span>
-    <span class="timestamp">
-      Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
-    </span>
-  </td>
-  <% if current_user?(feed_item.user) %>
-      <td>
-        <%= button_to "delete", feed_item, :method => :delete,
-                      :confirm => "You sure?",
-                      :title => feed_item.content %>
-      </td>
-  <% end %>
-      <td>
-        <%= button_to "comment", "/users/#{current_user.id}/microposts/#{feed_item.id}/comment" %>
-      </td>
+  <div id="<%= "post_#{feed_item.id}" %>">
+    <div class="postdiv">
+      <div class="post_username"><%= feed_item.user.name %></div>
+      <div class="post_message"><%= feed_item.content %></div>
+      <div class="post_timestamp">Posted <%= time_ago_in_words(feed_item.created_at) %> ago.</div>
 
-        <td>
-        <%= link_to "vote  #{feed_item.no_of_vote}", "/users/#{current_user.id}/microposts/#{feed_item.id}/vote" %>
-      </td>
-  <% @rfeed_items = Micropost.where("micropost_id = ?", feed_item.id) %>
-  <%= render :partial => 'shared/rfeed_item', :collection => @rfeed_items %>
+      <div class="options">
+        <% if signed_in? %>
+            <div style="float: left; width: auto;">
+              <%= button_to "comment", "/users/#{feed_item.user.id}/microposts/#{feed_item.id}/comment" %>
+            </div>
+            <% if current_user?(feed_item.user) or current_user.admin %>
+                <div style="float: left; width: auto;">
+                  <%= button_to "delete", feed_item, :method => :delete,
+                                :confirm => "You sure?",
+                                :title => feed_item.content %>
+                </div>
+            <% end %>
+            <div style="float: left; width: auto;">
+              <%= button_to "vote : #{feed_item.no_of_vote}", "/users/#{current_user.id}/microposts/#{feed_item.id}/vote" %>
+            </div>
+        <% end %>
+      </div>
+      <% replylist= Micropost.find_all_by_micropost_id(feed_item.id)
+         for replymsg in replylist %>
+          <div class="replydiv">
+            <div class="reply"><%= "#{replymsg.user.name} : #{replymsg.content}" %></div>
 
+            <% if signed_in? %>
+                <div class="cheerbox">
+                  <%= button_to "vote : #{feed_item.no_of_vote}", "/users/#{current_user.id}/microposts/#{feed_item.id}/vote" %>
+                </div>
+            <% end %>
+          </div>
+      <% end %>
+    </div>
+  </div>
 </tr>
+

@@ -38,6 +38,11 @@ class User < ActiveRecord::Base
     Micropost.where("user_id = ? and micropost_id IS NULL", id)
   end
 
+    def feedall
+    # This is preliminary. See Chapter 12 for the full implementation.
+    Micropost.where("micropost_id IS NULL", id)
+  end
+
   private
 
   def encrypt_password

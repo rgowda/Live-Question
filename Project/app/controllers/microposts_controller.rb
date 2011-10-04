@@ -19,7 +19,7 @@ class MicropostsController < ApplicationController
     @reply.user_id=current_user.id
     @reply.micropost_id = params[:id]
     @ruser = current_user
-    @cmicropost =  Micropost.find(params[:id])
+    @cmicropost = Micropost.find(params[:id])
     @cmicropost.touch
   end
 
@@ -32,15 +32,17 @@ class MicropostsController < ApplicationController
       @vote.micropost_id= params[:id]
       @vote.save
       @vmicropost = Micropost.find(params[:id])
-      @vmicropost.no_of_vote+= 1
-      @vmicropost.save
+      if (@vmicropost != [])
+        @vmicropost.no_of_vote+=1
+        @vmicropost.save
+      end
     end
     redirect_back_or root_path
   end
 
   def destroy
     Micropost.find(params[:id]).destroy
-    redirect_back_or root_path
+    redirect_to :back
   end
 
   private

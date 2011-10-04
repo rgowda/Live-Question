@@ -1,5 +1,5 @@
 class Micropost < ActiveRecord::Base
-  attr_accessible :content, :micropost_id, :no_of_vote
+  attr_accessible :content, :micropost_id, :no_of_vote, :activity
   has_many :votes, :dependent => :destroy
   belongs_to :user
   validates :content, :presence => true, :length => {:maximum => 140}

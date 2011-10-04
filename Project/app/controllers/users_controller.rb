@@ -47,10 +47,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @micropost = Micropost.new
-    @title = @user.name
-    @feed_items = @user.feed.paginate(:page => params[:page])
-    store_location
+    if (@user != [])
+      @micropost = Micropost.new
+      @title = @user.name
+      @feed_items = @user.feed.paginate(:page => params[:page])
+      store_location
+    end
   end
 
   def destroy

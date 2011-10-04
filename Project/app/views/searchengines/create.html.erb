@@ -1,0 +1,32 @@
+<table class="search" summary="search results">
+  <tr>
+    <td>
+      <strong>Users : </strong>
+    </td>
+  </tr>
+  <tr>
+    <% if !@feed_users.empty? %>
+        <%= render 'shared/feed_user' %>
+    <% else %>
+        <td>
+          <Strong> None Found </Strong>
+        </td>
+    <% end %>
+  </tr>
+
+  <tr>
+    <td>
+      <strong>Posts : </strong>
+    </td>
+  </tr>
+
+  <tr>
+    <% if !@feed_microposts.empty? %>
+        <%= render 'shared/feed_micropost' %>
+    <% else %>
+        <td>
+          <Strong> None Found </Strong>
+        </td>
+    <% end %>
+  </tr>
+</table>

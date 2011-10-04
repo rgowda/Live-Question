@@ -1,21 +1,15 @@
 <table class="profile" summary="Profile information">
+  <td class="sidebar round">
+    <strong>Name</strong> <%= @user.name %> <br/>
+    <strong>URL</strong>  <%= link_to user_path(@user), @user %>
+    <strong>Microposts</strong> <%= @user.microposts.count %>
+  </td>
   <tr>
-    <% if signed_in? %>
-        <td class="main">
-          <h1>
-            <%= gravatar_for @user %>
-            <%= @user.name %>
-          </h1>
-          <% if current_user?(@user) %>
+    <td class="main">
+      <% if current_user?(@user) %>
           <%= render 'shared/micropost_form' %>
-          <% end %>
-          <%= render 'shared/feed' %>
-        </td>
-        <td class="sidebar round">
-          <strong>Name</strong> <%= @user.name %> <br/>
-          <strong>URL</strong>  <%= link_to user_path(@user), @user %>
-          <strong>Microposts</strong> <%= @user.microposts.count %>
-        </td>
-    <% end %>
+      <% end %>
+      <%= render 'shared/feed' %>
+    </td>
   </tr>
 </table>
