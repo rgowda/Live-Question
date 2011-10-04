@@ -47,12 +47,21 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if (@user != [])
-      @micropost = Micropost.new
-      @title = @user.name
-      @feed_items = @user.feed.paginate(:page => params[:page])
-      store_location
+    @micropost = Micropost.new
+    @title = @user.name
+    @tempfeeditems = Micropost.all
+    #update each record with the latest value of activity.
+    @tempfeeditems.each do |post|
+      diff_seconds = (Time.now - post.updated_at).round
+      diff_days = diff_seconds / 86400
+      if (diff_days > 7)
+        diff_days = 7
+      end
+      post.activity = 7 - diff_days + post.no_of_vote
+      post.save
     end
+    @feed_items = @user.feed.paginate(:page => params[:page])
+    store_location
   end
 
   def destroy

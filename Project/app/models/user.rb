@@ -35,12 +35,17 @@ class User < ActiveRecord::Base
 
   def feed
     # This is preliminary. See Chapter 12 for the full implementation.
-    Micropost.where("user_id = ? and micropost_id IS NULL", id)
+    Micropost.where("user_id = ? and micropost_id IS NULL", id).order("activity DESC")
   end
 
-    def feedall
-    # This is preliminary. See Chapter 12 for the full implementation.
-    Micropost.where("micropost_id IS NULL", id)
+  def feedAll
+    Micropost.where("micropost_id IS NULL").order("activity DESC")
+  end
+  def feedmicropostreport
+    Micropost.order("user_id , no_of_vote DESC")
+  end
+  def feeduserreport
+    User.order("id")
   end
 
   private

@@ -1,0 +1,12 @@
+<tr>
+  <div id="<%= "post_#{report_user_item.id}" %>">
+    <div class="postdiv">
+      <div class="post_username"><%= report_user_item.name %></div>
+      <div class="post_content"> Number of posts: <%= number = Micropost.count(:conditions => [ "user_id = ?", report_user_item ]) %></div>
+      <% if number > 0%>
+        <div class="post_content"> Average votes: <%= (Micropost.sum(:no_of_vote, :conditions=>[ "user_id = ?", report_user_item ])/number) %></div>
+      <% else %>
+        <div class="post_content"> Average votes: <%= number %></div>
+      <% end%>
+      </div>
+</tr>

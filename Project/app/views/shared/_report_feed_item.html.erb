@@ -1,0 +1,10 @@
+<tr>
+  <div id="<%= "post_#{report_feed_item.id}" %>">
+    <div class="postdiv">
+      <div class="post_username"><%= report_feed_item.user.name %></div>
+      <div class="post_message"> : <%= report_feed_item.content %></div>
+      <div class="post_timestamp">Posted <%= time_ago_in_words(report_feed_item.created_at) %> ago.</div>
+      <div class="post_content"> <strong>Number of Votes:</strong> <%= report_feed_item.no_of_vote %></div>
+    </div>
+  </div>
+</tr>

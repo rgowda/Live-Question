@@ -24,6 +24,9 @@ SampleApp::Application.routes.draw do
   match '/about', :to => 'pages#about'
   match '/help', :to => 'pages#help'
   match '/home', :to => 'pages#home'
+  match '/report' , :to => 'pages#report'
+  match '/reportusr' , :to => 'pages#reportusr'
+  match '/reportmpt' , :to => 'pages#reportmpt'
   root :to => 'pages#home'
 
   resources :users do
