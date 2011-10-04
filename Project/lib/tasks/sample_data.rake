@@ -21,7 +21,7 @@ namespace :db do
 
     50.times do
 	    User.all(:limit => 6).each do |user|
-	      user.microposts.create!(:content => Faker::Lorem.sentence(5))
+	      user.microposts.create!(:content => Faker::Lorem.sentence(5),:no_of_vote => 0)
 	    end
     end
 

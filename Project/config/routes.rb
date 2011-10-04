@@ -11,7 +11,7 @@ SampleApp::Application.routes.draw do
 
   match '/users/:id/microposts/:id/vote', :to => 'microposts#vote'
 
-
+  resources :searchengines
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
   resources :microposts, :only => [:create, :show, :destroy]
