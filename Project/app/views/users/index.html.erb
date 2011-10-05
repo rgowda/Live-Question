@@ -1,17 +1,64 @@
-<h1>All users</h1>
+<table class="profile" summary="Profile information">
+  <tr>
+    <td class="sidebar round">
+      <% if !current_user.nil? and current_user.admin? %>
+          <h1>Create User/Admin</h1>
+          <% @newuser = User.new %>
 
-<%= will_paginate %>
-<ul class="users">
-  <% @users.each do |user| %>
-      <li>
-        <%= gravatar_for user, :size => 30 %>
-        <%= link_to user.name, user %>
-        <% if current_user.admin? %>
-            <%= button_to "delete", user, :method => :delete, :confirm => "You sure?",
-                          :title => "Delete #{user.name}" %>
-        <% end %>
-      </li>
-  <% end %>
-</ul>
+          <%= form_for(@newuser) do |f| %>
+              <%= render 'shared/error_messages', :object => f.object %>
+              <div class="field">
+                <%= f.label :name %>
+                <br/>
+                <%= f.text_field :name %>
+              </div>
+              <div class="field">
+                <%= f.label :email %>
+                <br/>
+                <%= f.text_field :email %>
+              </div>
+              <div class="field">
+                <%= f.label :password %>
+                <br/>
+                <%= f.password_field :password %>
+              </div>
+              <div class="field">
+                <%= f.label :password_confirmation, "Confirmation" %>
+                <br/>
+                <%= f.password_field :password_confirmation %>
+              </div>
+              <div class="field">
+                <%= f.label :admin, "Is Admin : Input 'true/false'" %>
+                <br/>
+                <%= f.text_field :admin %>
+              </div>
+              <div class="actions">
+                <%= f.submit "Create" %>
+              </div>
+          <% end %>
+      <% end %>
+    </td>
+    <td class="sidebar round">
+      <h1>All users</h1>
+      <%= will_paginate %>
 
-<%= will_paginate %>
+      <% @users.each do |user| %>
+            <div class="userdiv">
+              <div class="post_username"><%= link_to user.name, user %></div>
+              <div style="float: right; width: auto;">
+                <% if current_user.admin? %>
+                    <%= button_to "delete", user, :method => :delete, :confirm => "You sure?",
+                                  :title => "Delete #{user.name}" %>
+                <% end %>
+              </div>
+            </div>
+
+      <% end %>
+      </ul>
+      <%= will_paginate %>
+    </td>
+  </tr>
+</table>
+
+
+
