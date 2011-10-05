@@ -1,13 +1,13 @@
 <tr>
   <div id="<%= "post_#{feed_micropost_item.id}" %>">
     <div class="postdiv">
-      <div class="post_username"><%= feed_micropost_item.user.name %></div>
+      <div class="post_username"><%= link_to feed_micropost_item.user.name,feed_micropost_item.user  %></div>
       <div class="post_message"><%= feed_micropost_item.content %>
       </div>
       <div class="options">
         <% if signed_in? %>
             <div style="float: left; width: auto;">
-              <%= button_to "comment", "/users/#{feed_micropost_item.user.id}/microposts/#{feed_micropost_item.id}/comment" %>
+              <%= button_to "comment", "/users/#{current_user.id}/microposts/#{feed_micropost_item.id}/comment" %>
             </div>
             <% if current_user?(feed_micropost_item.user) or current_user.admin %>
                 <div style="float: left; width: auto;">
@@ -24,11 +24,11 @@
       <% replylist= Micropost.find_all_by_micropost_id(feed_micropost_item.id)
          for replymsg in replylist %>
           <div class="replydiv">
-            <div class="reply"><%= "#{replymsg.user.name} : #{replymsg.content}" %></div>
+            <div class="reply"><%= link_to replymsg.user.name,replymsg.user  %><%= " : #{replymsg.content}" %></div>
 
             <% if signed_in? %>
                 <div class="cheerbox">
-                  <%= button_to "vote : #{feed_micropost_item.no_of_vote}", "/users/#{current_user.id}/microposts/#{feed_micropost_item.id}/vote" %>
+                  <%= button_to "vote : #{replymsg.no_of_vote}", "/users/#{current_user.id}/microposts/#{replymsg.id}/vote" %>
                 </div>
             <% end %>
           </div>

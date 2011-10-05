@@ -3,7 +3,7 @@
 }
 
 body {
-    background: #ccffff;
+    background: #edf2f9;
 }
 
 header {
@@ -87,7 +87,7 @@ a.signup_button {
     text-align: center;
     width: 190px;
     color: #fff;
-    background: #006400;
+    background: #096d90;
     font-size: 150%;
     font-weight: bold;
     padding: 20px;
@@ -130,7 +130,7 @@ td.sidebar {
     width: 30%;
     padding: 1em;
     vertical-align: top;
-    background: #ffc;
+    background: #ffffff;
 }
 
 .profile img.gravatar {
@@ -229,7 +229,7 @@ div.user_info a {
 }
 
 div.user_info span.user_name {
-    position: relative;
+    position: absolute;
 }
 
 div.user_info span.microposts {
@@ -347,7 +347,7 @@ a {
     clear: both;
     color: #333333;
     float: left;
-    font: 11px "lucida grande", tahoma, verdana, arial, sans-serif;
+    font: 13px "trebuchet MS";
     margin: 0;
     padding: 3px 3px 0 5px;
     width: 234px;
@@ -361,6 +361,7 @@ a {
     margin: 2px 0 0 32px;
     padding: 6px 3px;
     width: 330px;
+    font: 13px "trebuchet MS";
 }
 
 .topmenu {
@@ -420,6 +421,7 @@ a {
 
 .post_message {
     clear: right;
+    font: 13px "trebuchet MS";
     line-height: 19px;
 }
 
