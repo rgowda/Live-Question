@@ -130,9 +130,14 @@ td.sidebar {
     width: 30%;
     padding: 1em;
     vertical-align: top;
-    background: #ffffff;
+    background: #ffffcc;
 }
+td.createsidebar {
+    width: 30%;
+    padding: 1em;
+    vertical-align: top;
 
+}
 .profile img.gravatar {
     border: 1px solid #999;
     margin-bottom: -15px;
@@ -320,7 +325,7 @@ a {
     width: 90%;
 }
 .userdiv {
-    background: none repeat scroll 0 0 #FFFFFF;
+    background: none repeat scroll 0 0 #ffffcc;
     clear: both;
     float: left;
     margin: 0 0 10px;

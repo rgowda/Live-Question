@@ -1,6 +1,6 @@
 <table class="profile" summary="Profile information">
   <tr>
-    <td class="sidebar round">
+    <td class="createsidebar round">
       <% if !current_user.nil? and current_user.admin? %>
           <h1>Create User/Admin</h1>
           <% @newuser = User.new %>
