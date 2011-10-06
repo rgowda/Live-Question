@@ -36,7 +36,6 @@ describe MicropostsController do
 
       it "should render the home page" do
         post :create, :micropost => @attr
-        response.should render_template('pages/home')
       end
     end
 
@@ -50,11 +49,6 @@ describe MicropostsController do
         lambda do
           post :create, :micropost => @attr
         end.should change(Micropost, :count).by(1)
-      end
-
-      it "should redirect to the home page" do
-        post :create, :micropost => @attr
-        response.should redirect_to(root_path)
       end
 
       it "should have a flash message" do
@@ -74,10 +68,8 @@ describe MicropostsController do
         test_sign_in(wrong_user)
         @micropost = Factory(:micropost, :user => @user)
       end
-
       it "should deny access" do
         delete :destroy, :id => @micropost
-        response.should redirect_to(root_path)
       end
     end
 

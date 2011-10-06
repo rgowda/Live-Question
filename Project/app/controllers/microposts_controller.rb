@@ -5,12 +5,18 @@ class MicropostsController < ApplicationController
 
   def create
     @micropost = current_user.microposts.build(params[:micropost])
+    if (@micropost.blank? == true)
+      flash[:fatal] = "Invalid Micropost!!!"
+      redirect_to home_path
+      return
+    end
+
     @micropost.no_of_vote = 0
-    if @micropost.save
+    if (@micropost.save)
       flash[:success] = "Micropost created!"
-      redirect_back_or "/users/#{current_user.id}"
+      redirect_to "/users/#{current_user.id}"
     else
-      render 'pages/home'
+      redirect_to home_path
     end
   end
 
@@ -41,7 +47,9 @@ class MicropostsController < ApplicationController
   end
 
   def destroy
-    Micropost.find(params[:id]).destroy
+    if current_user.admin?
+      Micropost.find(params[:id]).destroy
+    end
     redirect_to :back
   end
 

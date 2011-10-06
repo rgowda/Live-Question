@@ -1,23 +1,23 @@
 <% if signed_in? %>
-  <table class="front" summary="For signed-in users">
+    <table class="front" summary="For signed-in users">
       <td class="sidebar round">
         <%= render 'shared/user_info' %>
       </td>
-    <tr>
-      <td class="main">
-      <%= link_to "User Report", reportusr_path, :class => "signup_button round" %>
-      <%= link_to "Micropost Report",reportmpt_path, :class => "signup_button round" %>
-      </td>
-    </tr>
-  </table>
+      <tr>
+        <td class="main">
+          <span><%= link_to "User Report", reportusr_path, :class => "signup_button round" %></span>
+          <span><%= link_to "Micropost Report", reportmpt_path, :class => "signup_button round" %></span>
+        </td>
+      </tr>
+    </table>
 <% else %>
-  <h1>Sample App</h1>
+    <h1>Sample App</h1>
 
-  <p>
-    This is the home page for the
-    <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-    sample application.
-  </p>
+    <p>
+      This is the home page for the
+      <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
+      sample application.
+    </p>
 
-  <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+    <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
 <% end %>
