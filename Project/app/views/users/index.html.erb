@@ -1,5 +1,25 @@
 <table class="profile" summary="Profile information">
   <tr>
+
+    <td class="sidebar round">
+      <h1>All users</h1>
+      <%= will_paginate %>
+
+      <% @users.each do |user| %>
+          <div class="userdiv">
+            <div class="post_username"><%= link_to user.name, user %></div>
+            <div style="float: right; width: auto;">
+              <% if current_user.admin? %>
+                  <%= button_to "delete", user, :method => :delete, :confirm => "You sure?",
+                                :title => "Delete #{user.name}" %>
+              <% end %>
+            </div>
+          </div>
+
+      <% end %>
+      </ul>
+      <%= will_paginate %>
+    </td>
     <td class="createsidebar round">
       <% if !current_user.nil? and current_user.admin? %>
           <h1>Create User/Admin</h1>
@@ -37,25 +57,6 @@
               </div>
           <% end %>
       <% end %>
-    </td>
-    <td class="sidebar round">
-      <h1>All users</h1>
-      <%= will_paginate %>
-
-      <% @users.each do |user| %>
-            <div class="userdiv">
-              <div class="post_username"><%= link_to user.name, user %></div>
-              <div style="float: right; width: auto;">
-                <% if current_user.admin? %>
-                    <%= button_to "delete", user, :method => :delete, :confirm => "You sure?",
-                                  :title => "Delete #{user.name}" %>
-                <% end %>
-              </div>
-            </div>
-
-      <% end %>
-      </ul>
-      <%= will_paginate %>
     </td>
   </tr>
 </table>

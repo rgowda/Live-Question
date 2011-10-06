@@ -21,8 +21,8 @@
   </tr>
 
   <tr>
-    <% if !@feed_microposts.empty? %>
-        <%= render 'shared/feed_micropost' %>
+    <% if !@feed_items.empty? %>
+        <%= render 'shared/feed' %>
     <% else %>
         <td>
           <Strong> None Found </Strong>

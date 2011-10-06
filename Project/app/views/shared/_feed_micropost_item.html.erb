@@ -28,7 +28,7 @@
 
             <% if signed_in? %>
                 <div class="cheerbox">
-                  <%= button_to "vote : #{replymsg.no_of_vote}", "/users/#{current_user.id}/microposts/#{replymsg.id}/vote" %>
+                  <%= button_to "vote : #{replymsg.no_of_vote}", "/users/#{current_user.id}/replymsg/#{replymsg.id}/vote" %>
                 </div>
             <% end %>
           </div>

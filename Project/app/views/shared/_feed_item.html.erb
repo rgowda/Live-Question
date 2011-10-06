@@ -7,30 +7,22 @@
 
       <div class="options">
         <% if signed_in? %>
-            <div style="float: left; width: auto;">
-              <%= button_to "comment", "/users/#{current_user.id}/microposts/#{feed_item.id}/comment" %>
-            </div>
-            <% if current_user?(feed_item.user) or current_user.admin %>
-                <div style="float: left; width: auto;">
-                  <%= button_to "delete", feed_item, :method => :delete,
-                                :confirm => "You sure?",
-                                :title => feed_item.content %>
-                </div>
+            <%= link_to "comment", "/users/#{current_user.id}/microposts/#{feed_item.id}/comment" %>
+            <% if !current_user.nil? and current_user.admin %>
+                <%= link_to "delete", "/users/#{current_user.id}/microposts/#{feed_item.id}/destroy" %>
             <% end %>
-            <div style="float: left; width: auto;">
-              <%= button_to "vote : #{feed_item.no_of_vote}", "/users/#{current_user.id}/microposts/#{feed_item.id}/vote" %>
-            </div>
+            <%= link_to "vote(#{feed_item.no_of_vote})", "/users/#{current_user.id}/microposts/#{feed_item.id}/vote" %>
         <% end %>
       </div>
       <% replylist= Micropost.find_all_by_micropost_id(feed_item.id)
          for replymsg in replylist %>
           <div class="replydiv">
-            <div class="reply"><%= link_to replymsg.user.name,replymsg.user  %><%= " : #{replymsg.content}" %></div>
-
+            <div class="reply"><%= link_to replymsg.user.name, replymsg.user %><%= " : #{replymsg.content}" %></div>
+            <% if !current_user.nil? and current_user.admin %>
+                <%= link_to "delete", "/users/#{current_user.id}/microposts/#{replymsg.id}/destroy" %>
+            <% end %>
             <% if signed_in? %>
-            <div style="float: left; width: auto;">
-                  <%= button_to "vote : #{replymsg.no_of_vote}", "/users/#{current_user.id}/microposts/#{replymsg.id}/vote" %>
-                </div>
+                <%= link_to "vote : #{replymsg.no_of_vote}", "/users/#{current_user.id}/microposts/#{replymsg.id}/vote" %>
             <% end %>
           </div>
       <% end %>

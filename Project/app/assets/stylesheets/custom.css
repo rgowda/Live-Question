@@ -225,6 +225,12 @@ table.microposts tr td.micropost span.timestamp {
     color: #666;
 }
 
+div.srch {
+    text-align: center;
+    margin: auto;
+    padding: 0;
+}
+
 div.user_info img {
     padding-right: 0.1em;
 }
@@ -255,7 +261,13 @@ form.new_searchengine {
 }
 
 form.new_searchengine textarea {
-    height: 4em;
+    height: 1em;
+    margin-bottom: 0;
+}
+
+form.new_searchengine textfield {
+    height: 2em;
+    width: 100%;
     margin-bottom: 0;
 }
 

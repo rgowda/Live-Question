@@ -1,8 +1,6 @@
 <% if signed_in? %>
-    <table class="front" summary="For signed-in users">
-      <td class="sidebar round">
+  <table class="front" summary="For signed-in users">
         <%= render 'shared/user_info' %>
-      </td>
       <tr>
         <td class="main">
           <span><%= link_to "User Report", reportusr_path, :class => "signup_button round" %></span>
@@ -11,13 +9,5 @@
       </tr>
     </table>
 <% else %>
-    <h1>Sample App</h1>
-
-    <p>
-      This is the home page for the
-      <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-      sample application.
-    </p>
-
-    <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+  <h1>LiveQ</h1>
 <% end %>

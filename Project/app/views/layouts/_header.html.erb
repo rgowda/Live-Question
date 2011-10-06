@@ -2,7 +2,7 @@
   <%= link_to logo, root_path %>
   <nav class="round">
     <ul>
-          <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "Home", root_path %></li>
       <% if signed_in? %>
           <li><%= link_to "Users", users_path %></li>
           <li><%= link_to "Profile", current_user %></li>
@@ -11,7 +11,6 @@
           <li><%= link_to "Reports", report_path %></li>
          <% end %>
       <% end %>
-      <li><%= link_to "Search", searchengines_path %></li>
       <li><%= link_to "Help", help_path %></li>
       <% if signed_in? %>
           <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
@@ -20,4 +19,18 @@
       <% end %>
     </ul>
   </nav>
+
+    <div class="srch">
+    <% @searchengine = Searchengine.new %>
+    <%= form_for @searchengine do |f| %>
+        <%= render 'shared/error_messages', :object => f.object %>
+        <div class="field">
+          <%= f.text_field :content %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Search" %>
+        </div>
+    <% end %>
+  </div>
+
 </header>

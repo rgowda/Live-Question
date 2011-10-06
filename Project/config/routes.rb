@@ -1,20 +1,18 @@
-SampleApp::Application.routes.draw do
-
+LiveQ::Application.routes.draw do
 
   resources :users do
     resources :microposts do
       member do
-        post 'comment'
+        get 'comment'
       end
     end
   end
 
-  match '/users/:id/microposts/:id/vote', :to => 'microposts#vote'
+    match '/searchengines/result', :to => 'searchengines#result' , :as => :results
 
-  resources :searchengines
-  resources :users
-  resources :sessions, :only => [:new, :create, :destroy]
-  resources :microposts, :only => [:create, :show, :destroy]
+  match '/users/:id/microposts/:id/vote', :to => 'microposts#vote'
+  match '/users/:id/microposts/:id/destroy', :to => 'microposts#destroy'
+
 
   match '/signup', :to => 'users#new'
   match '/signin', :to => 'sessions#new'
@@ -33,6 +31,17 @@ SampleApp::Application.routes.draw do
     resources :microposts do
     end
   end
+
+  resources :searchengines do
+    member do
+      post 'search'
+    end
+  end
+
+  resources :users
+  resources :sessions, :only => [:new, :create, :destroy]
+  resources :microposts, :only => [:create, :show, :destroy]
+  resources :searchengines
 
 
   match ':controller(/:action(/:id(.:format)))'
