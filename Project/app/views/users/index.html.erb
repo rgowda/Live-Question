@@ -9,7 +9,7 @@
           <div class="userdiv">
             <div class="post_username"><%= link_to user.name, user %></div>
             <div style="float: right; width: auto;">
-              <% if current_user.admin? %>
+              <% if current_user.admin? and user!=current_user %>
                   <%= button_to "delete", user, :method => :delete, :confirm => "You sure?",
                                 :title => "Delete #{user.name}" %>
               <% end %>

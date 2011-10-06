@@ -18,7 +18,7 @@
          for replymsg in replylist %>
           <div class="replydiv">
             <div class="reply"><%= link_to replymsg.user.name, replymsg.user %><%= " : #{replymsg.content}" %></div>
-            <% if !current_user.nil? and current_user.admin %>
+            <% if !current_user.nil? and current_user.admin? %>
                 <%= link_to "delete", "/users/#{current_user.id}/microposts/#{replymsg.id}/destroy" %>
             <% end %>
             <% if signed_in? %>
