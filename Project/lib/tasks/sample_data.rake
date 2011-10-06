@@ -4,9 +4,9 @@ namespace :db do
     Rake::Task['db:reset'].invoke
 
     admin = User.create!(:name => "Admin",
-                         :email => "admin@railstutorial.org",
-                         :password => "foobar",
-                         :password_confirmation => "foobar")
+                         :email => "admin@liveq.com",
+                         :password => "qwerty",
+                         :password_confirmation => "qwerty")
     admin.toggle!(:admin)
 
     99.times do |n|
@@ -31,9 +31,9 @@ namespace :db do
     Rake::Task['db:reset'].invoke
 
     admin = User.create!(:name => "Admin",
-                         :email => "admin@railstutorial.org",
-                         :password => "foobar",
-                         :password_confirmation => "foobar")
+                         :email => "admin@liveq.com",
+                         :password => "qwerty",
+                         :password_confirmation => "qwerty")
     admin.toggle!(:admin)
 
 
