@@ -24,3 +24,6 @@
 Usage:
     Admin username: admin@liveq.com
 	Admin password : qwerty
+
+Extra Credit Details:
+We have implemented the Rspec test cases. Please find the in the spec folder.
