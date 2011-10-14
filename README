@@ -1,0 +1,28 @@
+Usage:
+Admin username: admin@liveq.com
+Admin password : qwerty
+
+1. Please navigate inside the 'project' folder.
+2. Run the following commands:
+  
+	For running in production environment:
+	1. bundle install.
+	2. bundle exec rake db:migrate RAILS_ENV="production"
+	3. bundle exec rake db:populateprod RAILS_ENV="production"
+	4. rails s -e production
+	
+	For running in development environment:
+	1. bundle install.
+	2. bundle exec rake db:migrate RAILS_ENV="development"
+	3. bundle exec rake db:populate RAILS_ENV="development"
+	4. rails s -e development
+	
+	For running the test cases  using Rspec:	
+	1. bundle install.
+	2. bundle exec rake db:migrate
+	3. bundle exec rake db:populate
+	4. bundle exec rake db:test:prepare
+
+
+Extra Credit Details:
+We have implemented the Rspec test cases. Please find the in the spec folder.
